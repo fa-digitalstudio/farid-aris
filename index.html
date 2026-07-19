@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Biodata Diri</title>
-    <!-- Import Font dari Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Lato:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Biodata | FA Digital Studio</title>
+    <!-- Import Font dari Google Fonts (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Import Ikon dari FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -17,99 +17,107 @@
         }
 
         body {
-            background: linear-gradient(135deg, #0F3460 0%, #1a4d6d 50%, #0F3460 100%);
-            background-size: 200% 200%;
-            animation: deepFlow 15s ease infinite;
+            background-color: #0b0f19;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            font-family: 'Lato', sans-serif;
-            color: #2c3e50;
+            font-family: 'Poppins', sans-serif;
+            color: #e2e8f0;
+            position: relative;
+            overflow-x: hidden;
         }
 
-        @keyframes deepFlow {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        /* Elemen Latar Belakang (Glowing Orbs) */
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 10s infinite alternate ease-in-out;
         }
 
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(212, 175, 55, 0.15); /* Gold */
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: rgba(15, 52, 96, 0.4); /* Blue */
+            bottom: -150px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(30px) scale(1.1); }
+        }
+
+        /* Container Glassmorphism */
         .container {
-            background: #F8F6F0;
-            max-width: 900px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            max-width: 850px;
             width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.3), 
-                        0 10px 20px rgba(212, 175, 55, 0.1);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            animation: slideUp 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
-            position: relative;
-        }
-
-        /* Side stripe premium effect */
-        .container::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 6px;
-            height: 100%;
-            background: linear-gradient(180deg, #D4AF37 0%, #B8960C 50%, #D4AF37 100%);
-            z-index: 10;
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ===== HEADER PROFIL ===== */
         .profile-header {
             text-align: center;
-            padding: 50px 30px 35px;
-            background: linear-gradient(180deg, #F8F6F0 0%, #F2F0E8 100%);
-            border-bottom: 2px dashed rgba(212, 175, 55, 0.3);
+            padding: 50px 30px 30px;
             position: relative;
+            background: linear-gradient(180deg, rgba(212,175,55,0.05) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .profile-img-wrapper {
+            position: relative;
+            display: inline-block;
         }
 
         .profile-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 8px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #D4AF37;
-            box-shadow: 0 12px 35px rgba(15, 52, 96, 0.25);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 3px solid transparent;
+            background: linear-gradient(#0b0f19, #0b0f19) padding-box, 
+                        linear-gradient(135deg, #D4AF37, #FBBF24) border-box;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+            transition: all 0.5s ease;
         }
 
-        .profile-img:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 18px 45px rgba(212, 175, 55, 0.3);
-        }
-
-        .profile-header h1 {
-            margin-top: 20px;
-            font-size: 38px;
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: #0F3460;
-            letter-spacing: -0.5px;
+        .profile-img-wrapper:hover .profile-img {
+            transform: scale(1.05);
+            box-shadow: 0 0 45px rgba(212, 175, 55, 0.4);
         }
 
         .profile-header p {
             font-size: 15px;
-            color: #666;
-            font-weight: 400;
-            margin-top: 8px;
-            letter-spacing: 1px;
+            color: #D4AF37;
+            font-weight: 500;
+            margin-top: 20px;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
@@ -118,316 +126,170 @@
             padding: 40px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 30px;
         }
 
         .data-card {
-            background: #FFFFFF;
+            background: rgba(0, 0, 0, 0.2);
             padding: 30px;
-            border-radius: 8px;
-            border-left: 5px solid #D4AF37;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
             transition: all 0.4s ease;
-            position: relative;
-        }
-
-        .data-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 10px,
-                rgba(212, 175, 55, 0.05) 10px,
-                rgba(212, 175, 55, 0.05) 11px
-            );
-            pointer-events: none;
-            border-radius: 8px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
         }
 
         .data-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(15, 52, 96, 0.15);
-            border-left-color: #2F6B7A;
-        }
-
-        .data-card:hover::after {
-            opacity: 0.5;
-        }
-
-        .data-card > * {
-            position: relative;
-            z-index: 2;
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.3);
+            border-color: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         h2 {
             font-size: 18px;
-            font-family: 'Playfair Display', serif;
-            color: #0F3460;
-            margin-bottom: 24px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #E8E3D6;
+            color: #ffffff;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
 
         h2 i {
             color: #D4AF37;
-            font-size: 18px;
+            font-size: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 10px;
+            border-radius: 10px;
         }
 
         .info-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 14px;
+            gap: 16px;
         }
 
         .info-list li {
-            font-size: 14px;
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 12px;
-            border-radius: 6px;
-            background: #FAFAF8;
-            border: 1px solid #F0EDE5;
-            transition: all 0.3s ease;
+            align-items: center;
+            gap: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
         }
 
-        .info-list li:hover {
-            background: #F5F2ED;
-            border-color: #D4AF37;
-            transform: translateX(4px);
+        .info-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
         }
 
         .info-list i {
-            color: #2F6B7A;
-            width: 18px;
+            color: #94a3b8;
+            width: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .info-text-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-label {
+            font-size: 11px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .info-value {
+            color: #f8fafc;
             font-size: 14px;
-            margin-top: 2px;
-            flex-shrink: 0;
+            font-weight: 500;
+            text-decoration: none;
             transition: color 0.3s ease;
         }
-
-        .info-list li:hover i {
+        
+        a.info-value:hover {
             color: #D4AF37;
-        }
-
-        .info-list strong {
-            font-family: 'Roboto Mono', monospace;
-            color: #0F3460;
-            font-weight: 600;
-            font-size: 13px;
-            min-width: 65px;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            flex-shrink: 0;
-        }
-
-        .info-text {
-            color: #444;
-            flex: 1;
-            line-height: 1.6;
-            word-wrap: break-word;
-            word-break: break-word;
         }
 
         /* ===== SOSIAL MEDIA ===== */
         .social-section {
             grid-column: 1 / -1;
             padding: 30px;
-            background: linear-gradient(90deg, rgba(212, 175, 55, 0.05) 0%, transparent 50%, rgba(212, 175, 55, 0.05) 100%);
-            border-top: 2px dashed rgba(212, 175, 55, 0.3);
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            margin: 10px 0 0 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background: rgba(0, 0, 0, 0.1);
         }
 
         .social-label {
-            font-size: 13px;
-            color: #666;
+            font-size: 12px;
+            color: #94a3b8;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Playfair Display', serif;
-            color: #0F3460;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
 
         .social-media {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 20px;
         }
 
         .social-btn {
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            width: 56px;
-            height: 56px;
-            border-radius: 6px;
-            background: #0F3460;
-            color: #D4AF37;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
             text-decoration: none;
             font-size: 22px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 6px 18px rgba(15, 52, 96, 0.2);
-            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .social-btn:hover {
             background: #D4AF37;
-            color: #0F3460;
-            border-color: #0F3460;
-            transform: translateY(-8px) scale(1.08);
-            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+            color: #000;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+            border-color: #D4AF37;
         }
 
         /* ===== RESPONSIVE MOBILE ===== */
         @media (max-width: 768px) {
-            body {
-                padding: 12px;
-            }
-
-            .container {
-                border-radius: 10px;
-            }
-
-            .profile-header {
-                padding: 35px 20px 25px;
-            }
-
-            .profile-img {
-                width: 120px;
-                height: 120px;
-            }
-
-            .profile-header h1 {
-                font-size: 28px;
-            }
-
-            .profile-header p {
-                font-size: 13px;
-            }
-
             .content {
                 grid-template-columns: 1fr;
                 gap: 20px;
                 padding: 25px;
             }
 
-            .data-card {
-                padding: 20px;
-            }
-
-            h2 {
-                font-size: 16px;
-                margin-bottom: 18px;
-            }
-
-            .info-list li {
-                font-size: 13px;
-                padding: 10px;
-                gap: 10px;
-            }
-
-            .info-list strong {
-                min-width: 60px;
-                font-size: 12px;
-            }
-
-            .social-section {
-                padding: 20px;
-                gap: 15px;
-            }
-
-            .social-media {
-                gap: 18px;
-            }
-
-            .social-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .profile-header {
-                padding: 30px 15px 20px;
-            }
-
             .profile-img {
-                width: 100px;
-                height: 100px;
-            }
-
-            .profile-header h1 {
-                font-size: 24px;
-                margin-top: 15px;
-            }
-
-            .content {
-                gap: 15px;
-                padding: 15px;
-            }
-
-            .data-card {
-                padding: 16px;
-                border-left-width: 4px;
-            }
-
-            h2 {
-                font-size: 15px;
-                gap: 8px;
-            }
-
-            h2 i {
-                font-size: 16px;
-            }
-
-            .info-list li {
-                font-size: 12px;
-                padding: 9px;
-            }
-
-            .info-list strong {
-                min-width: 55px;
-                font-size: 11px;
-            }
-
-            .social-btn {
-                width: 46px;
-                height: 46px;
-                font-size: 18px;
-            }
-
-            .social-media {
-                gap: 15px;
+                width: 120px;
+                height: 120px;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Animasi Background Glowing -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
     <div class="container">
         <!-- HEADER PROFIL -->
         <div class="profile-header">
-            <img src="IMG-20260608-WA0047.jpg" alt="Foto Profil" class="profile-img">
-            <h1>FARID ARIS</h1>
-            <p>PEMILIK USAHA ( FA DIGITAL STUDIO )</p>
+            <div class="profile-img-wrapper">
+                <img src="IMG-20260608-WA0047.jpg" alt="Foto Profil" class="profile-img">
+            </div>
+            <p>FA DIGITAL STUDIO</p>
         </div>
 
         <!-- ISI KONTEN DATA -->
@@ -435,69 +297,92 @@
             
             <!-- KOLOM DATA DIRI -->
             <div class="data-card">
-                <h2><i class="fas fa-user-circle"></i> Data Diri</h2>
+                <h2><i class="fas fa-user"></i> Personal Info</h2>
                 <ul class="info-list">
                     <li>
                         <i class="fas fa-id-card"></i> 
-                        <strong>NIK</strong> 
-                        <span class="info-text">7401042807900002</span>
+                        <div class="info-text-group">
+                            <span class="info-label">Nama Lengkap</span>
+                            <span class="info-value">Farid Aris</span>
+                        </div>
+                    </li>
+                    <!-- Tambahan Alamat di Bawah Nama -->
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i> 
+                        <div class="info-text-group">
+                            <span class="info-label">Alamat</span>
+                            <span class="info-value">Jl. sultan Hasanuddin, kel watuliandu, kab. Kolaka</span>
+                        </div>
                     </li>
                     <li>
                         <i class="fas fa-venus-mars"></i> 
-                        <strong>Gender</strong> 
-                        <span class="info-text">Laki-laki</span>
+                        <div class="info-text-group">
+                            <span class="info-label">Gender</span>
+                            <span class="info-value">Laki-laki</span>
+                        </div>
                     </li>
                     <li>
                         <i class="fas fa-calendar-alt"></i> 
-                        <strong>TTL</strong> 
-                        <span class="info-text">kolaka, 28 juli 1990</span>
+                        <div class="info-text-group">
+                            <span class="info-label">Tempat, Tanggal Lahir</span>
+                            <span class="info-value">Kolaka, 28 Juli 1990</span>
+                        </div>
                     </li>
                     <li>
                         <i class="fas fa-tint"></i> 
-                        <strong>Gol Darah</strong> 
-                        <span class="info-text">O</span>
+                        <div class="info-text-group">
+                            <span class="info-label">Golongan Darah</span>
+                            <span class="info-value">O</span>
+                        </div>
                     </li>
                     <li>
                         <i class="fas fa-pray"></i> 
-                        <strong>Agama</strong> 
-                        <span class="info-text">Islam</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-ring"></i> 
-                        <strong>Status</strong> 
-                        <span class="info-text">Sudah Nikah</span>
+                        <div class="info-text-group">
+                            <span class="info-label">Agama</span>
+                            <span class="info-value">Islam</span>
+                        </div>
                     </li>
                 </ul>
             </div>
 
-            <!-- KOLOM KONTAK & ALAMAT -->
+            <!-- KOLOM KONTAK -->
             <div class="data-card">
-                <h2><i class="fas fa-address-book"></i> Kontak & Alamat</h2>
+                <h2><i class="fas fa-address-book"></i> Kontak</h2>
                 <ul class="info-list">
                     <li>
-                        <i class="fas fa-map-marker-alt"></i> 
-                        <strong>Alamat</strong> 
-                        <span class="info-text">Jl. sultan hasanuddin, Kel. watuliandu, Kec. kolaka, Kab. Kolaka, Sulawesi Tenggara</span>
-                    </li>
-                    <li>
                         <i class="fas fa-envelope"></i> 
-                        <strong>Email</strong> 
-                        <span class="info-text">faridaris25@gmail.com</span>
+                        <div class="info-text-group">
+                            <span class="info-label">Email</span>
+                            <span class="info-value">faridaris25@gmail.com</span>
+                        </div>
                     </li>
                     <li>
                         <i class="fas fa-phone-alt"></i> 
-                        <strong>Telepon</strong> 
-                        <span class="info-text">082346742415</span>
+                        <div class="info-text-group">
+                            <span class="info-label">Telepon / WhatsApp</span>
+                            <span class="info-value">082346742415</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-globe"></i> 
+                        <div class="info-text-group">
+                            <span class="info-label">Website</span>
+                            <a href="https://www.fa-digitalstudio.web.id/" target="_blank" class="info-value">www.fa-digitalstudio.web.id</a>
+                        </div>
                     </li>
                 </ul>
             </div>
 
             <!-- SOSIAL MEDIA -->
             <div class="social-section">
-                <div class="social-label">Hubungi Saya</div>
+                <div class="social-label">Mari Terhubung</div>
                 <div class="social-media">
-                    <a href="#" class="social-btn" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://t.me/fa_digital_studio" class="social-btn" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://wa.me/6282346742415" target="_blank" class="social-btn" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://t.me/fa_digital_studio" target="_blank" class="social-btn" title="Telegram">
+                        <i class="fab fa-telegram-plane"></i>
+                    </a>
                 </div>
             </div>
 
