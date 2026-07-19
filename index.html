@@ -215,6 +215,91 @@
             color: #D4AF37;
         }
 
+        /* ===== KOLOM DONASI ===== */
+        .donation-card {
+            grid-column: 1 / -1; 
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(0, 0, 0, 0.4) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donation-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transform: skewX(-25deg);
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            100% { left: 200%; }
+        }
+
+        .donation-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .donation-item {
+            flex: 1;
+            min-width: 280px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .donation-item:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: #D4AF37;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .wallet-icon {
+            font-size: 24px;
+            color: #D4AF37;
+            background: rgba(212, 175, 55, 0.1);
+            width: 55px;
+            height: 55px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .donation-details {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Mencegah overflow */
+        }
+
+        .donation-label {
+            font-size: 11px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .donation-number {
+            color: #D4AF37;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
         /* ===== SOSIAL MEDIA ===== */
         .social-section {
             grid-column: 1 / -1;
@@ -262,17 +347,59 @@
             border-color: #D4AF37;
         }
 
-        /* ===== RESPONSIVE MOBILE ===== */
+        /* ===== RESPONSIVE MOBILE (DIPERBAIKI AGAR PRESISI) ===== */
         @media (max-width: 768px) {
+            body {
+                padding: 10px; /* Kurangi jarak pinggir layar */
+            }
+
             .content {
                 grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 25px;
+                gap: 15px;
+                padding: 15px; /* Kurangi padding dalam */
+            }
+
+            .profile-header {
+                padding: 40px 20px 20px;
             }
 
             .profile-img {
                 width: 120px;
                 height: 120px;
+            }
+
+            .data-card {
+                padding: 20px 15px; /* Kurangi padding kartu agar ruang teks lebih lebar */
+            }
+
+            h2 {
+                font-size: 16px;
+            }
+
+            /* Fix Bagian Donasi untuk HP */
+            .donation-container {
+                gap: 12px;
+            }
+
+            .donation-item {
+                min-width: 100%; /* Wajib 100% agar tidak keluar jalur */
+                padding: 12px; /* Kurangi padding dalam kotak donasi */
+                gap: 12px;
+            }
+
+            .wallet-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            .donation-number {
+                font-size: 14.5px; /* Sesuaikan ukuran font untuk nomor yang panjang */
+                letter-spacing: 0.5px; /* Kurangi jarak huruf agar muat 1 baris */
+            }
+
+            .donation-label {
+                font-size: 10px; /* Label disesuaikan */
             }
         }
     </style>
@@ -306,7 +433,6 @@
                             <span class="info-value">Farid Aris</span>
                         </div>
                     </li>
-                    <!-- Tambahan Alamat di Bawah Nama -->
                     <li>
                         <i class="fas fa-map-marker-alt"></i> 
                         <div class="info-text-group">
@@ -371,6 +497,36 @@
                         </div>
                     </li>
                 </ul>
+            </div>
+
+            <!-- KOLOM DONASI -->
+            <div class="data-card donation-card">
+                <h2><i class="fas fa-hand-holding-heart"></i> Dukungan & Donasi</h2>
+                <div class="donation-container">
+                    
+                    <!-- OVO -->
+                    <div class="donation-item">
+                        <div class="wallet-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="donation-details">
+                            <span class="donation-label">OVO • a.n Farid Aris</span>
+                            <span class="donation-number">0858 2544 4030</span>
+                        </div>
+                    </div>
+
+                    <!-- BANK BRI -->
+                    <div class="donation-item">
+                        <div class="wallet-icon">
+                            <i class="fas fa-building-columns"></i>
+                        </div>
+                        <div class="donation-details">
+                            <span class="donation-label">Bank BRI • a.n Farid Aris</span>
+                            <span class="donation-number">0216 0106 5472 500</span>
+                        </div>
+                    </div>
+
+                </div>
             </div>
 
             <!-- SOSIAL MEDIA -->
