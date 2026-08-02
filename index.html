@@ -17,106 +17,60 @@
         }
 
         body {
-            background-color: #0b0f19;
+            background: radial-gradient(circle at top left, #1e293b 0%, #0b0f19 50%, #000000 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 30px 20px;
             font-family: 'Poppins', sans-serif;
             color: #e2e8f0;
-            position: relative;
-            overflow-x: hidden;
         }
 
-        /* Elemen Latar Belakang (Glowing Orbs) */
-        .bg-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            animation: float 10s infinite alternate ease-in-out;
-        }
-
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: rgba(212, 175, 55, 0.15); /* Gold */
-            top: -100px;
-            left: -100px;
-        }
-
-        .orb-2 {
-            width: 500px;
-            height: 500px;
-            background: rgba(15, 52, 96, 0.4); /* Blue */
-            bottom: -150px;
-            right: -100px;
-            animation-delay: -5s;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(30px) scale(1.1); }
-        }
-
-        /* Container Glassmorphism */
         .container {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             max-width: 850px;
             width: 100%;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ===== HEADER PROFIL ===== */
         .profile-header {
             text-align: center;
-            padding: 50px 30px 30px;
-            position: relative;
-            background: linear-gradient(180deg, rgba(212,175,55,0.05) 0%, transparent 100%);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 50px 30px 35px;
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.08) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .profile-img-wrapper {
-            position: relative;
             display: inline-block;
+            padding: 5px;
+            background: linear-gradient(135deg, #D4AF37, #FBBF24);
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.25);
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid transparent;
-            background: linear-gradient(#0b0f19, #0b0f19) padding-box, 
-                        linear-gradient(135deg, #D4AF37, #FBBF24) border-box;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
-            transition: all 0.5s ease;
-        }
-
-        .profile-img-wrapper:hover .profile-img {
-            transform: scale(1.05);
-            box-shadow: 0 0 45px rgba(212, 175, 55, 0.4);
+            border: 4px solid #0b0f19;
+            display: block;
         }
 
         .profile-header p {
             font-size: 13px;
             color: #D4AF37;
             font-weight: 500;
-            margin-top: 20px;
+            margin-top: 25px;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -130,18 +84,11 @@
         }
 
         .data-card {
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(15, 23, 42, 0.6);
             padding: 30px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            transition: all 0.4s ease;
-        }
-
-        .data-card:hover {
-            transform: translateY(-5px);
-            background: rgba(0, 0, 0, 0.3);
-            border-color: rgba(212, 175, 55, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         h2 {
@@ -153,41 +100,52 @@
             gap: 12px;
             font-weight: 600;
             letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 15px;
         }
 
+        /* Perbaikan Ekstra Ikon H2 agar berbentuk kotak sempurna */
         h2 i {
-            color: #D4AF37;
-            font-size: 20px;
-            background: rgba(212, 175, 55, 0.1);
-            padding: 10px;
+            color: #0b0f19;
+            font-size: 18px;
+            background: #D4AF37;
+            width: 35px;
+            height: 35px;
+            min-width: 35px; 
+            min-height: 35px;
+            aspect-ratio: 1 / 1; /* Menjaga proporsi agar tidak gepeng */
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 10px;
+            flex-shrink: 0; 
+            line-height: 1;
+            box-sizing: border-box;
         }
 
         .info-list {
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 18px;
         }
 
         .info-list li {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 15px;
-            padding-bottom: 12px;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
         }
 
-        .info-list li:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .info-list i {
-            color: #94a3b8;
-            width: 20px;
-            font-size: 16px;
+        /* Perbaikan Ikon List (di dalam teks) */
+        .info-list > li > i {
+            color: #D4AF37;
+            font-size: 18px;
+            margin-top: 3px; /* Disesuaikan agar rata dengan teks pertama */
+            width: 22px;
+            min-width: 22px;
             text-align: center;
+            flex-shrink: 0;
+            display: inline-block;
         }
 
         .info-text-group {
@@ -200,42 +158,27 @@
             color: #94a3b8;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
 
         .info-value {
             color: #f8fafc;
-            font-size: 14px;
+            font-size: 14.5px;
             font-weight: 500;
             text-decoration: none;
-            transition: color 0.3s ease;
+            line-height: 1.4;
         }
         
         a.info-value:hover {
             color: #D4AF37;
+            text-decoration: underline;
         }
 
         /* ===== KOLOM DONASI ===== */
         .donation-card {
             grid-column: 1 / -1; 
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(0, 0, 0, 0.4) 100%);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(15, 23, 42, 0.8) 100%);
             border: 1px solid rgba(212, 175, 55, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .donation-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 50%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.1), transparent);
-            transform: skewX(-25deg);
-            animation: shine 4s infinite;
-        }
-
-        @keyframes shine {
-            100% { left: 200%; }
         }
 
         .donation-container {
@@ -247,57 +190,88 @@
         .donation-item {
             flex: 1;
             min-width: 280px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
-            gap: 15px;
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
+            gap: 18px;
         }
 
-        .donation-item:hover {
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.06);
-            border-color: #D4AF37;
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
-        }
-
+        /* Perbaikan Ikon Donasi agar tidak memanjang/gepeng */
         .wallet-icon {
             font-size: 24px;
-            color: #D4AF37;
-            background: rgba(212, 175, 55, 0.1);
+            color: #0b0f19;
+            background: #D4AF37;
             width: 55px;
             height: 55px;
+            min-width: 55px;
+            min-height: 55px;
+            aspect-ratio: 1 / 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 12px;
-            flex-shrink: 0;
+            border-radius: 14px;
+            flex-shrink: 0; 
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            line-height: 1;
+            box-sizing: border-box;
         }
 
         .donation-details {
             display: flex;
             flex-direction: column;
-            overflow: hidden; /* Mencegah overflow */
+            width: 100%;
         }
 
         .donation-label {
-            font-size: 11px;
-            color: #94a3b8;
+            font-size: 11.5px;
+            color: #cbd5e1;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
+        }
+
+        /* Wrapper untuk nomor dan tombol salin */
+        .copy-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .donation-number {
             color: #D4AF37;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+        }
+
+        /* Styling Tombol Salin */
+        .copy-btn {
+            background: rgba(212, 175, 55, 0.15);
+            color: #D4AF37;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 6px;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            outline: none;
+        }
+
+        .copy-btn:hover {
+            background: #D4AF37;
+            color: #0b0f19;
         }
 
         /* ===== SOSIAL MEDIA ===== */
@@ -305,17 +279,17 @@
             grid-column: 1 / -1;
             padding: 30px;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            background: rgba(0, 0, 0, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.2);
         }
 
         .social-label {
             font-size: 12px;
             color: #94a3b8;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            font-weight: 500;
+            letter-spacing: 2.5px;
+            margin-bottom: 25px;
+            font-weight: 600;
         }
 
         .social-media {
@@ -328,87 +302,71 @@
             display: inline-flex;
             justify-content: center;
             align-items: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
             background: rgba(255, 255, 255, 0.05);
             color: #e2e8f0;
             text-decoration: none;
-            font-size: 22px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .social-btn:hover {
             background: #D4AF37;
-            color: #000;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+            color: #0b0f19;
             border-color: #D4AF37;
         }
 
-        /* ===== RESPONSIVE MOBILE (DIPERBAIKI AGAR PRESISI) ===== */
+        /* ===== RESPONSIVE MOBILE ===== */
         @media (max-width: 768px) {
             body {
-                padding: 10px; /* Kurangi jarak pinggir layar */
+                padding: 15px; 
             }
-
             .content {
                 grid-template-columns: 1fr;
-                gap: 15px;
-                padding: 15px; /* Kurangi padding dalam */
+                gap: 20px;
+                padding: 20px; 
             }
-
             .profile-header {
-                padding: 40px 20px 20px;
+                padding: 40px 20px 25px;
             }
-
             .profile-img {
                 width: 120px;
                 height: 120px;
             }
-
             .data-card {
-                padding: 20px 15px; /* Kurangi padding kartu agar ruang teks lebih lebar */
+                padding: 25px 20px; 
             }
-
             h2 {
                 font-size: 16px;
             }
-
-            /* Fix Bagian Donasi untuk HP */
             .donation-container {
-                gap: 12px;
+                gap: 15px;
             }
-
             .donation-item {
-                min-width: 100%; /* Wajib 100% agar tidak keluar jalur */
-                padding: 12px; /* Kurangi padding dalam kotak donasi */
-                gap: 12px;
+                min-width: 100%; 
+                padding: 15px; 
+                gap: 15px;
             }
-
             .wallet-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
+                width: 50px;
+                height: 50px;
+                min-width: 50px;
+                min-height: 50px;
+                font-size: 20px;
             }
-
             .donation-number {
-                font-size: 14.5px; /* Sesuaikan ukuran font untuk nomor yang panjang */
-                letter-spacing: 0.5px; /* Kurangi jarak huruf agar muat 1 baris */
+                font-size: 14px; 
+                letter-spacing: 1px; 
             }
-
             .donation-label {
-                font-size: 10px; /* Label disesuaikan */
+                font-size: 11px; 
             }
         }
     </style>
 </head>
 <body>
-
-    <!-- Animasi Background Glowing -->
-    <div class="bg-orb orb-1"></div>
-    <div class="bg-orb orb-2"></div>
 
     <div class="container">
         <!-- HEADER PROFIL -->
@@ -434,10 +392,17 @@
                         </div>
                     </li>
                     <li>
+                        <i class="fas fa-briefcase"></i> 
+                        <div class="info-text-group">
+                            <span class="info-label">Pekerjaan</span>
+                            <span class="info-value">Wiraswasta</span>
+                        </div>
+                    </li>
+                    <li>
                         <i class="fas fa-map-marker-alt"></i> 
                         <div class="info-text-group">
                             <span class="info-label">Alamat</span>
-                            <span class="info-value">Jl. sultan Hasanuddin, kel watuliandu, kab. Kolaka</span>
+                            <span class="info-value">Jl. Sultan Hasanuddin, Kel. Watuliandu, Kab. Kolaka</span>
                         </div>
                     </li>
                     <li>
@@ -511,7 +476,12 @@
                         </div>
                         <div class="donation-details">
                             <span class="donation-label">OVO • a.n Farid Aris</span>
-                            <span class="donation-number">0858 2544 4030</span>
+                            <div class="copy-wrapper">
+                                <span class="donation-number">0858 2544 4030</span>
+                                <button class="copy-btn" onclick="copyText('085825444030', this)" title="Salin Nomor">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -522,7 +492,12 @@
                         </div>
                         <div class="donation-details">
                             <span class="donation-label">Bank BRI • a.n Farid Aris</span>
-                            <span class="donation-number">0216 0106 5472 500</span>
+                            <div class="copy-wrapper">
+                                <span class="donation-number">0216 0106 5472 500</span>
+                                <button class="copy-btn" onclick="copyText('021601065472500', this)" title="Salin Nomor">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -545,5 +520,30 @@
         </div>
     </div>
 
+    <!-- SCRIPT UNTUK FITUR COPY/SALIN -->
+    <script>
+        function copyText(text, btnElement) {
+            // Menyalin teks ke clipboard
+            navigator.clipboard.writeText(text).then(function() {
+                // Mencari elemen ikon (<i>) di dalam tombol
+                var icon = btnElement.querySelector('i');
+                
+                // Ubah ikon ke tanda centang & warna tombol
+                icon.className = 'fas fa-check';
+                btnElement.style.background = '#D4AF37';
+                btnElement.style.color = '#0b0f19';
+                
+                // Kembalikan ke ikon copy setelah 2 detik
+                setTimeout(function() {
+                    icon.className = 'fas fa-copy';
+                    btnElement.style.background = 'rgba(212, 175, 55, 0.15)';
+                    btnElement.style.color = '#D4AF37';
+                }, 2000);
+            }).catch(function(err) {
+                console.error('Gagal menyalin nomor: ', err);
+                alert('Gagal menyalin nomor, silakan coba lagi.');
+            });
+        }
+    </script>
 </body>
 </html>
