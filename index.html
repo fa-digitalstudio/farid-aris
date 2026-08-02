@@ -83,6 +83,44 @@
             gap: 30px;
         }
 
+        /* BLUR & SECURITY STYLES */
+        .toggle-container {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: -10px;
+        }
+
+        .toggle-btn {
+            background: rgba(212, 175, 55, 0.15);
+            color: #D4AF37;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            outline: none;
+        }
+
+        .toggle-btn:hover {
+            background: #D4AF37;
+            color: #0b0f19;
+        }
+
+        .blurred {
+            filter: blur(5px);
+            user-select: none;
+            pointer-events: none;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
         .data-card {
             background: rgba(15, 23, 42, 0.6);
             padding: 30px;
@@ -113,7 +151,7 @@
             height: 35px;
             min-width: 35px; 
             min-height: 35px;
-            aspect-ratio: 1 / 1; /* Menjaga proporsi agar tidak gepeng */
+            aspect-ratio: 1 / 1; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -140,7 +178,7 @@
         .info-list > li > i {
             color: #D4AF37;
             font-size: 18px;
-            margin-top: 3px; /* Disesuaikan agar rata dengan teks pertama */
+            margin-top: 3px; 
             width: 22px;
             min-width: 22px;
             text-align: center;
@@ -199,7 +237,6 @@
             gap: 18px;
         }
 
-        /* Perbaikan Ikon Donasi agar tidak memanjang/gepeng */
         .wallet-icon {
             font-size: 24px;
             color: #0b0f19;
@@ -233,7 +270,6 @@
             margin-bottom: 5px;
         }
 
-        /* Wrapper untuk nomor dan tombol salin */
         .copy-wrapper {
             display: flex;
             align-items: center;
@@ -252,7 +288,6 @@
             letter-spacing: 1.5px;
         }
 
-        /* Styling Tombol Salin */
         .copy-btn {
             background: rgba(212, 175, 55, 0.15);
             color: #D4AF37;
@@ -320,49 +355,18 @@
 
         /* ===== RESPONSIVE MOBILE ===== */
         @media (max-width: 768px) {
-            body {
-                padding: 15px; 
-            }
-            .content {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                padding: 20px; 
-            }
-            .profile-header {
-                padding: 40px 20px 25px;
-            }
-            .profile-img {
-                width: 120px;
-                height: 120px;
-            }
-            .data-card {
-                padding: 25px 20px; 
-            }
-            h2 {
-                font-size: 16px;
-            }
-            .donation-container {
-                gap: 15px;
-            }
-            .donation-item {
-                min-width: 100%; 
-                padding: 15px; 
-                gap: 15px;
-            }
-            .wallet-icon {
-                width: 50px;
-                height: 50px;
-                min-width: 50px;
-                min-height: 50px;
-                font-size: 20px;
-            }
-            .donation-number {
-                font-size: 14px; 
-                letter-spacing: 1px; 
-            }
-            .donation-label {
-                font-size: 11px; 
-            }
+            body { padding: 15px; }
+            .content { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+            .profile-header { padding: 40px 20px 25px; }
+            .profile-img { width: 120px; height: 120px; }
+            .data-card { padding: 25px 20px; }
+            h2 { font-size: 16px; }
+            .donation-container { gap: 15px; }
+            .donation-item { min-width: 100%; padding: 15px; gap: 15px; }
+            .wallet-icon { width: 50px; height: 50px; min-width: 50px; min-height: 50px; font-size: 20px; }
+            .donation-number { font-size: 14px; letter-spacing: 1px; }
+            .donation-label { font-size: 11px; }
+            .toggle-container { justify-content: center; }
         }
     </style>
 </head>
@@ -379,6 +383,13 @@
 
         <!-- ISI KONTEN DATA -->
         <div class="content">
+
+            <!-- TOMBOL TOGGLE BLUR DATA -->
+            <div class="toggle-container">
+                <button id="toggleSensitiveBtn" class="toggle-btn">
+                    <i class="fas fa-lock"></i> Buka Data Sensitif
+                </button>
+            </div>
             
             <!-- KOLOM DATA DIRI -->
             <div class="data-card">
@@ -392,6 +403,13 @@
                         </div>
                     </li>
                     <li>
+                        <i class="fas fa-id-badge"></i> 
+                        <div class="info-text-group">
+                            <span class="info-label">Nomor KTP</span>
+                            <span class="info-value sensitive-data blurred">7401042807900002</span>
+                        </div>
+                    </li>
+                    <li>
                         <i class="fas fa-briefcase"></i> 
                         <div class="info-text-group">
                             <span class="info-label">Pekerjaan</span>
@@ -402,7 +420,7 @@
                         <i class="fas fa-map-marker-alt"></i> 
                         <div class="info-text-group">
                             <span class="info-label">Alamat</span>
-                            <span class="info-value">Jl. Sultan Hasanuddin, Kel. Watuliandu, Kab. Kolaka</span>
+                            <span class="info-value sensitive-data blurred">Jl. Sultan Hasanuddin, Kel. Watuliandu, Kab. Kolaka</span>
                         </div>
                     </li>
                     <li>
@@ -416,7 +434,7 @@
                         <i class="fas fa-calendar-alt"></i> 
                         <div class="info-text-group">
                             <span class="info-label">Tempat, Tanggal Lahir</span>
-                            <span class="info-value">Kolaka, 28 Juli 1990</span>
+                            <span class="info-value sensitive-data blurred">Kolaka, 28 Juli 1990</span>
                         </div>
                     </li>
                     <li>
@@ -451,7 +469,7 @@
                         <i class="fas fa-phone-alt"></i> 
                         <div class="info-text-group">
                             <span class="info-label">Telepon / WhatsApp</span>
-                            <span class="info-value">082346742415</span>
+                            <span class="info-value sensitive-data blurred">082346742415</span>
                         </div>
                     </li>
                     <li>
@@ -523,17 +541,12 @@
     <!-- SCRIPT UNTUK FITUR COPY/SALIN -->
     <script>
         function copyText(text, btnElement) {
-            // Menyalin teks ke clipboard
             navigator.clipboard.writeText(text).then(function() {
-                // Mencari elemen ikon (<i>) di dalam tombol
                 var icon = btnElement.querySelector('i');
-                
-                // Ubah ikon ke tanda centang & warna tombol
                 icon.className = 'fas fa-check';
                 btnElement.style.background = '#D4AF37';
                 btnElement.style.color = '#0b0f19';
                 
-                // Kembalikan ke ikon copy setelah 2 detik
                 setTimeout(function() {
                     icon.className = 'fas fa-copy';
                     btnElement.style.background = 'rgba(212, 175, 55, 0.15)';
@@ -544,6 +557,71 @@
                 alert('Gagal menyalin nomor, silakan coba lagi.');
             });
         }
+    </script>
+
+    <!-- SCRIPT UNTUK FIREBASE & FITUR HIDE/SHOW DATA SENSITIF -->
+    <script type="module">
+        // Import Firebase SDK (Modular v10)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+        // TODO: Ganti dengan Konfigurasi Firebase Anda!
+        const firebaseConfig = {
+  apiKey: "AIzaSyAPI-g-guh9mCj-GtDZ6ocylkfnRnti0Is",
+  authDomain: "datasensi-7f848.firebaseapp.com",
+  projectId: "datasensi-7f848",
+  storageBucket: "datasensi-7f848.firebasestorage.app",
+  messagingSenderId: "762733065120",
+  appId: "1:762733065120:web:0868c2307cf70496c46ac5"
+};
+
+        // Inisialisasi Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Logika Toggle Button
+        const toggleBtn = document.getElementById('toggleSensitiveBtn');
+        const sensitiveElements = document.querySelectorAll('.sensitive-data');
+        let isLocked = true;
+
+        toggleBtn.addEventListener('click', async () => {
+            if (isLocked) {
+                // Minta Password dari user
+                const userPass = prompt("Masukkan password untuk melihat data sensitif:");
+                
+                if (userPass) {
+                    try {
+                        // Merujuk ke node 'settings/password' di database Anda
+                        const passRef = ref(db, 'settings/password');
+                        const snapshot = await get(passRef);
+                        
+                        if (snapshot.exists()) {
+                            const correctPass = snapshot.val();
+                            
+                            // Cek kecocokan password
+                            if (userPass === correctPass) {
+                                // Buka sensor (hilangkan class blurred)
+                                sensitiveElements.forEach(el => el.classList.remove('blurred'));
+                                isLocked = false;
+                                toggleBtn.innerHTML = '<i class="fas fa-lock-open"></i> Tutup Data Sensitif';
+                            } else {
+                                alert("Password yang Anda masukkan salah!");
+                            }
+                        } else {
+                            alert("Database error: Password belum diatur di Firebase.");
+                        }
+                    } catch (error) {
+                        console.error("Firebase Error: ", error);
+                        alert("Terjadi kesalahan saat menghubungi server. Pastikan config Firebase Anda sudah benar.");
+                    }
+                }
+            } else {
+                // Tutup kembali data (tambahkan class blurred)
+                sensitiveElements.forEach(el => el.classList.add('blurred'));
+                isLocked = true;
+                toggleBtn.innerHTML = '<i class="fas fa-lock"></i> Buka Data Sensitif';
+            }
+        });
     </script>
 </body>
 </html>
