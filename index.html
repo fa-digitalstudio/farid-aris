@@ -406,7 +406,7 @@
                         <i class="fas fa-id-badge"></i> 
                         <div class="info-text-group">
                             <span class="info-label">Nomor KTP</span>
-                            <span class="info-value sensitive-data blurred">7401042807900002</span>
+                            <span class="info-value">74010<span class="sensitive-data blurred">42807900002</span></span>
                         </div>
                     </li>
                     <li>
@@ -420,7 +420,7 @@
                         <i class="fas fa-map-marker-alt"></i> 
                         <div class="info-text-group">
                             <span class="info-label">Alamat</span>
-                            <span class="info-value sensitive-data blurred">Jl. Sultan Hasanuddin, Kel. Watuliandu, Kab. Kolaka</span>
+                            <span class="info-value">Kel. Watuliandu <span class="sensitive-data blurred">, Jl sultan hasanuddin, Kab. Kolaka</span></span>
                         </div>
                     </li>
                     <li>
@@ -434,7 +434,7 @@
                         <i class="fas fa-calendar-alt"></i> 
                         <div class="info-text-group">
                             <span class="info-label">Tempat, Tanggal Lahir</span>
-                            <span class="info-value sensitive-data blurred">Kolaka, 28 Juli 1990</span>
+                            <span class="info-value">Kolaka, 28 Juli <span class="sensitive-data blurred">1990</span></span>
                         </div>
                     </li>
                     <li>
@@ -469,7 +469,7 @@
                         <i class="fas fa-phone-alt"></i> 
                         <div class="info-text-group">
                             <span class="info-label">Telepon / WhatsApp</span>
-                            <span class="info-value sensitive-data blurred">082346742415</span>
+                            <span class="info-value">082<span class="sensitive-data blurred">346742415</span></span>
                         </div>
                     </li>
                     <li>
@@ -540,19 +540,15 @@
 
     <!-- SCRIPT PENGAMAN (ANTI KLIK KANAN & INSPECT ELEMENT) -->
     <script>
-        // Mencegah klik kanan
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
 
-        // Mencegah tombol pintasan untuk Inspect Element (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U)
         document.addEventListener('keydown', function(e) {
-            // Tombol F12
             if (e.key === 'F12') {
                 e.preventDefault();
                 return false;
             }
-            // Kombinasi Ctrl+Shift+I / J / C atau Ctrl+U
             if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
                 e.preventDefault();
                 return false;
@@ -587,7 +583,6 @@
 
     <!-- SCRIPT UNTUK FIREBASE & FITUR HIDE/SHOW DATA SENSITIF -->
     <script type="module">
-        // Import Firebase SDK (Modular v10)
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
@@ -600,11 +595,9 @@
             appId: "1:762733065120:web:0868c2307cf70496c46ac5"
         };
 
-        // Inisialisasi Firebase
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
 
-        // Logika Toggle Button
         const toggleBtn = document.getElementById('toggleSensitiveBtn');
         const sensitiveElements = document.querySelectorAll('.sensitive-data');
         let isLocked = true;
