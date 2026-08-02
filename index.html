@@ -370,7 +370,7 @@
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;">
 
     <div class="container">
         <!-- HEADER PROFIL -->
@@ -538,6 +538,32 @@
         </div>
     </div>
 
+    <!-- SCRIPT PENGAMAN (ANTI KLIK KANAN & INSPECT ELEMENT) -->
+    <script>
+        // Mencegah klik kanan
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Mencegah tombol pintasan untuk Inspect Element (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U)
+        document.addEventListener('keydown', function(e) {
+            // Tombol F12
+            if (e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+            // Kombinasi Ctrl+Shift+I / J / C atau Ctrl+U
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
+
     <!-- SCRIPT UNTUK FITUR COPY/SALIN -->
     <script>
         function copyText(text, btnElement) {
@@ -565,15 +591,14 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 
-        // TODO: Ganti dengan Konfigurasi Firebase Anda!
         const firebaseConfig = {
-  apiKey: "AIzaSyAPI-g-guh9mCj-GtDZ6ocylkfnRnti0Is",
-  authDomain: "datasensi-7f848.firebaseapp.com",
-  projectId: "datasensi-7f848",
-  storageBucket: "datasensi-7f848.firebasestorage.app",
-  messagingSenderId: "762733065120",
-  appId: "1:762733065120:web:0868c2307cf70496c46ac5"
-};
+            apiKey: "AIzaSyAPI-g-guh9mCj-GtDZ6ocylkfnRnti0Is",
+            authDomain: "datasensi-7f848.firebaseapp.com",
+            projectId: "datasensi-7f848",
+            storageBucket: "datasensi-7f848.firebasestorage.app",
+            messagingSenderId: "762733065120",
+            appId: "1:762733065120:web:0868c2307cf70496c46ac5"
+        };
 
         // Inisialisasi Firebase
         const app = initializeApp(firebaseConfig);
@@ -586,21 +611,17 @@
 
         toggleBtn.addEventListener('click', async () => {
             if (isLocked) {
-                // Minta Password dari user
                 const userPass = prompt("Masukkan password untuk melihat data sensitif:");
                 
                 if (userPass) {
                     try {
-                        // Merujuk ke node 'settings/password' di database Anda
                         const passRef = ref(db, 'settings/password');
                         const snapshot = await get(passRef);
                         
                         if (snapshot.exists()) {
                             const correctPass = snapshot.val();
                             
-                            // Cek kecocokan password
                             if (userPass === correctPass) {
-                                // Buka sensor (hilangkan class blurred)
                                 sensitiveElements.forEach(el => el.classList.remove('blurred'));
                                 isLocked = false;
                                 toggleBtn.innerHTML = '<i class="fas fa-lock-open"></i> Tutup Data Sensitif';
@@ -616,7 +637,6 @@
                     }
                 }
             } else {
-                // Tutup kembali data (tambahkan class blurred)
                 sensitiveElements.forEach(el => el.classList.add('blurred'));
                 isLocked = true;
                 toggleBtn.innerHTML = '<i class="fas fa-lock"></i> Buka Data Sensitif';
